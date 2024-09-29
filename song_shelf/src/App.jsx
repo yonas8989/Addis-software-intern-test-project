@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function App() {
   return (
     <div>
-<h1>hello world </h1>      
+      <button class="bg-cyan-500 hover:bg-cyan-600 ...">Subscribe</button>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
