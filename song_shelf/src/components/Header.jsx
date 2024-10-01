@@ -8,7 +8,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-blue-600 text-white p-4">
+    <header className="bg-gray-900 text-white p-4 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-2xl font-bold">Song Manager</h1>
         
@@ -35,9 +35,10 @@ const Header = () => {
         {/* Navigation menu */}
         <nav className={`flex-col sm:flex-row sm:flex gap-4 ${isOpen ? 'flex' : 'hidden'} sm:block`}>
           <a href="#home" className="text-lg font-medium hover:underline">Home</a>
-          <a href="#about" className="text-lg font-medium hover:underline">About</a>
           <a href="#songlist" className="text-lg font-medium hover:underline">Songlist</a>
           <a href="#contact" className="text-lg font-medium hover:underline">Contact</a>
+          <a href="#addsong" className="text-lg font-medium hover:underline">Add Song</a>
+          <a href="#editsong" className="text-lg font-medium hover:underline">Edit Song</a>
         </nav>
       </div>
     </header>
