@@ -37,8 +37,8 @@ const Header = () => {
           <a href="#home" className="text-lg font-medium hover:underline">Home</a>
           <a href="#songlist" className="text-lg font-medium hover:underline">Songlist</a>
           <a href="#contact" className="text-lg font-medium hover:underline">Contact</a>
-          <a href="#addsong" className="text-lg font-medium hover:underline">Add Song</a>
-          <a href="#editsong" className="text-lg font-medium hover:underline">Edit Song</a>
+          {/* <a href="#addsong" className="text-lg font-medium hover:underline">Add Song</a>
+          <a href="#editsong" className="text-lg font-medium hover:underline">Edit Song</a> */}
         </nav>
       </div>
     </header>
