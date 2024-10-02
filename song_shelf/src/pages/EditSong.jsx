@@ -29,7 +29,7 @@ const EditSong = ({ song, onSave, onCancel }) => {
     <>
       <Header />
       <div className="max-w-2xl mx-auto bg-gray-900 shadow-md rounded-lg p-6 mt-10 mb-56">
-        <h1 className="text-2xl font-bold mb-4">Edit Song</h1>
+        <h1 className="text-2xl text-white-600 font-bold mb-4 text-white ">Edit Song</h1>
 
         <form onSubmit={handleSubmit}>
           <InputField
@@ -73,7 +73,6 @@ const EditSong = ({ song, onSave, onCancel }) => {
           <ActionButtons onSave={handleSubmit} onCancel={onCancel} />
         </form>
       </div>
-      <Footer/>
     </>
   );
 };

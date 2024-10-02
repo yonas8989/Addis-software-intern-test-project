@@ -5,7 +5,7 @@ const SongActions = ({ onAddSong, onDeleteSong, onEditSong }) => {
     <div className="song-actions flex justify-around items-center p-4 bg-blue-100 rounded-lg shadow-md">
       <button
         onClick={onAddSong}
-        className="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105"
+        className="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105"
       >
         Add Song
       </button>

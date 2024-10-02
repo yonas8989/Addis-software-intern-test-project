@@ -1,36 +1,72 @@
 // src/pages/Home.js
-import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import SongList from '../features/songs/SongList';
-import Button from '../components/Button';
-import FormInput from '../components/FormInput';
+import React  from "react";
+import Header from "../components/Header";
+import HeroSection from "../components/HeroSection";
+import Footer from "../components/Footer";
+import AlbumImage from "../components/AlbumImage";
 
 const Home = () => {
-  // Example: Fake song data
-  const [songs, setSongs] = useState([
-    { id: 1, title: 'Song One', artist: 'Artist One' },
-    { id: 2, title: 'Song Two', artist: 'Artist Two' },
-  ]);
+  const albums = [
+    {
+      imageUrl:
+        "https://images.pexels.com/photos/27969812/pexels-photo-27969812/free-photo-of-croissant-with-salmon-on-plate.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load",
+      albumTitle: "Thriller",
+      musicianName: "Michael Jackson",
+    },
+    {
+      imageUrl:
+        "https://images.pexels.com/photos/20227920/pexels-photo-20227920/free-photo-of-harbor-of-valletta.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load",
+      albumTitle: "The Dark Side of the Moon",
+      musicianName: "Pink Floyd",
+    },
+    {
+      imageUrl:
+        "https://images.pexels.com/photos/28403274/pexels-photo-28403274/free-photo-of-strawberries.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load",
+      albumTitle: "Abbey Road",
+      musicianName: "The Beatles",
+    },
+    {
+      imageUrl:
+        "https://images.pexels.com/photos/28403274/pexels-photo-28403274/free-photo-of-strawberries.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load",
+      albumTitle: "Abbey Road",
+      musicianName: "The Beatles",
+    },
+    {
+      imageUrl:
+        "https://images.pexels.com/photos/28403274/pexels-photo-28403274/free-photo-of-strawberries.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load",
+      albumTitle: "Abbey Road",
+      musicianName: "The Beatles",
+    },
+    {
+      imageUrl:
+        "https://images.pexels.com/photos/28403274/pexels-photo-28403274/free-photo-of-strawberries.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load",
+      albumTitle: "Abbey Road",
+      musicianName: "The Beatles",
+    },
 
-  const handleEdit = (id) => {
-    // Handle edit logic here
-    console.log(`Edit song with id: ${id}`);
-  };
+  ];
 
-  const handleDelete = (id) => {
-    // Handle delete logic here
-    setSongs(songs.filter(song => song.id !== id));
-  };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-900">
       <Header />
-      <Button/>
-      <div className="container mx-auto py-8">
-        <h2 className="text-2xl font-bold mb-4">All Songs</h2>
-        <SongList songs={songs} onEdit={handleEdit} onDelete={handleDelete} />
+
+      <HeroSection />
+      <div className="  text-white ">
+        <h1 className="text-3xl font-bold text-center my-8">Famous Albums</h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 hover:gap-6">
+          {albums.map((album, index) => (
+            <AlbumImage
+              key={index}
+              imageUrl={album.imageUrl}
+              albumTitle={album.albumTitle}
+              musicianName={album.musicianName}
+            />
+          ))}
+        </div>
       </div>
-      <FormInput/>
+      <Footer />
     </div>
   );
 };
