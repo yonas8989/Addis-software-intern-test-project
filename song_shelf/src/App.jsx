@@ -24,6 +24,7 @@ const App = () => {
 
         {/* Footer component - Sticky at the bottom */}
         <Footer />
+
       </div>
     </Router>
   );

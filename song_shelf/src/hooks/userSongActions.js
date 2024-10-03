@@ -5,7 +5,7 @@ import {
   addSongRequest,
   editSongRequest,
   deleteSongRequest,
-} from '../features/songs/songSlice';
+} from '../features/songs/SongSlice';
 
 const useSongActions = () => {
   const dispatch = useDispatch();
