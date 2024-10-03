@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,11 +35,20 @@ const Header = () => {
 
         {/* Navigation menu */}
         <nav className={`flex-col sm:flex-row sm:flex gap-4 ${isOpen ? 'flex' : 'hidden'} sm:block`}>
-          <a href="#home" className="text-lg font-medium hover:underline">Home</a>
-          <a href="#songlist" className="text-lg font-medium hover:underline">Songlist</a>
-          <a href="#contact" className="text-lg font-medium hover:underline">Contact</a>
-          {/* <a href="#addsong" className="text-lg font-medium hover:underline">Add Song</a>
-          <a href="#editsong" className="text-lg font-medium hover:underline">Edit Song</a> */}
+        <ul className="flex space-x-4">
+            <li>
+              <Link to="/" className="text-white">Home</Link>
+            </li>
+            <li>
+              <Link to="/about" className="text-white">about</Link>
+            </li>
+            <li>
+              <Link to="/song-list" className="text-white">Song List</Link>
+            </li>
+            {/* <li>
+              <Link to="/edit-song" className="text-white">Edit Song</Link>
+            </li> */}
+          </ul>
         </nav>
       </div>
     </header>

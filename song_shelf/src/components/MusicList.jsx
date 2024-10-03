@@ -193,7 +193,7 @@ const MusicList = () => {
         </div>
 
         {/* Right Section: Song List */}
-        <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-red-800">
+        <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-gray-900">
           <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {filteredSongs.map((song) => (
               <MusicCard
