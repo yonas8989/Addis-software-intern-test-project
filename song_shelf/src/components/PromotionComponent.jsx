@@ -2,7 +2,8 @@ import React from 'react';
 
 const PromotionComponent = ({ title, artist, albumCover, onListenClick }) => {
   return (
-    <div className="sticky top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md p-6 flex items-center justify-between">
+    <div className="sticky top-1/2 transform -translate-y-1/2 bg-gradient-to-r
+     from-gray-500 to-indigo-100 text-white rounded-lg shadow-md p-6 flex items-center justify-between">
       <div className="flex items-center space-x-4">
         {/* Album Cover */}
         <img

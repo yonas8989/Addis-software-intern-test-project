@@ -24,7 +24,7 @@ const FilterComponent = ({ onFilterChange }) => {
   };
 
   return (
-    <div className="filter-component p-4 bg-gray-100 rounded-lg shadow-md sticky top-20 h-max">
+    <div className="filter-component p-4 bg-gray-300 rounded-lg shadow-md sticky top-20 h-max">
       <h3 className="text-lg font-bold mb-2">Filter Songs</h3>
       <GenreFilter
         genres={["Rock", "Pop", "Jazz", "Hip-Hop"]}
