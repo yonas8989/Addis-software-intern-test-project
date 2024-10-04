@@ -1,44 +1,70 @@
-// src/features/songs/SongList.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSongsRequest, editSongRequest, deleteSongRequest } from './SongSlice'; // Import your Redux actions
-import SongCard from '../../components/SongCard';
+import MusicCard from "./MusicCard";
+import FilterComponent from "./FilterComponent";
+import Footer from "./Footer";
+import SongActions from "./SongActions";
+import PromotionComponent from "./PromotionComponent";
+import useSongActions from '../hooks/userSongActions';
 
-const SongList = () => {
+const MusicList = () => {
+  const { fetchSongs } = useSongActions();
   const dispatch = useDispatch();
+  
+  // Select songs from Redux store
+  const { songs, loading, error } = useSelector((state) => state.songs);
 
-  // Access the songs state from Redux
-  const songs = useSelector((state) => state.songs.songs);
+  const [filteredSongs, setFilteredSongs] = useState(songs);
 
-  // Fetch songs when the component mounts
   useEffect(() => {
-    dispatch(fetchSongsRequest());
-  }, [dispatch]);
+    fetchSongs(); // Fetch songs when component mounts
+  }, [fetchSongs]);
 
-  // Dispatch edit action
-  const handleEdit = (id) => {
-    const updatedSong = { /* add your updated song data here */ };
-    dispatch(editSongRequest({ id, updatedSong }));
-  };
+  useEffect(() => {
+    setFilteredSongs(songs); // Update filtered songs when songs are fetched
+  }, [songs]);
 
-  // Dispatch delete action
-  const handleDelete = (id) => {
-    dispatch(deleteSongRequest(id));
+  const filterSongs = (genre, artist, album) => {
+    const filtered = songs.filter((song) => {
+      return (
+        (genre === "" || song.genre === genre) &&
+        (artist === "" || song.artistImage.includes(artist)) &&
+        (album === "" || song.album === album)
+      );
+    });
+    setFilteredSongs(filtered);
   };
 
   return (
-    <div className="space-y-4">
-      {songs.map((song) => (
-        <SongCard 
-          key={song.id} 
-          title={song.title} 
-          artist={song.artist} 
-          onEdit={() => handleEdit(song.id)} 
-          onDelete={() => handleDelete(song.id)} 
-        />
-      ))}
+    <div className="music-list-container">
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-blue-50 flex flex-col justify-between h-full p-4">
+          <FilterComponent onFilterChange={filterSongs} />
+          <PromotionComponent title={"mar eske tuafi "} artist={'tedy afro'} albumCover={"https://images.pexels.com/photos/28304389/pexels-photo-28304389/free-photo-of-a-person-holding-a-flower-in-front-of-the-ocean.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"} />
+          <PromotionComponent title={"mar eske tuafi "} artist={'tedy afro'} albumCover={"https://images.pexels.com/photos/28304389/pexels-photo-28304389/free-photo-of-a-person-holding-a-flower-in-front-of-the-ocean.jpeg?auto=compress&cs=tinysrgb&w=300&lazy=load"} />
+          <div className="mt-4">
+            <SongActions />
+          </div>
+        </div>
+        <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-gray-900">
+          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {filteredSongs.map((song) => (
+              <MusicCard
+                key={song.id}
+                id={song.id}  // Pass the song id here
+                title={song.title}
+                genre={song.genre}
+                album={song.album}
+                artistImage={song.artistImage}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default SongList;
+export default MusicList;
