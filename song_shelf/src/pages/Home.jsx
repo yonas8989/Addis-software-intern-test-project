@@ -1,5 +1,5 @@
 // src/pages/Home.js
-import React  from "react";
+import React from "react";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import AlbumImage from "../components/AlbumImage";
@@ -42,15 +42,14 @@ const Home = () => {
       albumTitle: "Abbey Road",
       musicianName: "The Beatles",
     },
-
   ];
-
 
   return (
     <div className="min-h-screen bg-gray-900">
       <Header />
 
       <HeroSection />
+
       <div className="  text-white ">
         <h1 className="text-3xl font-bold text-center my-8">Famous Albums</h1>
 
