@@ -17,8 +17,8 @@ const MusicCard = ({ id, title, genre, album, artistImage }) => {
         {/* Fixed height for the text container */}
         <div className="p-4 flex-grow flex flex-col justify-between">
           <h2 className="text-lg font-bold truncate">{title}</h2>
-          <p className="text-sm text-gray-600 truncate">Genre: {genre}</p>
-          <p className="text-sm text-gray-600 truncate">Album: {album}</p>
+          <p className="text-sm text-slate-100 truncate">Genre: {genre}</p>
+          <p className="text-sm text-slate-100 truncate">Album: {album}</p>
         </div>
       </div>
     </Link>
