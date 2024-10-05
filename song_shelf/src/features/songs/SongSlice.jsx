@@ -47,6 +47,9 @@ const songSlice = createSlice({
       state.loading = true;
     },
     editSongSuccess: (state, action) => {
+    // hold  the id and updated information from that specific song 
+    // find the old song id from the old state and compare to the requested id 
+    // then if the old and new id are the same we give the upadated info the old song
       const { id, updatedSong } = action.payload;
       const existingSongIndex = state.songs.findIndex((song) => song.id === id);
       if (existingSongIndex !== -1) {
@@ -64,6 +67,8 @@ const songSlice = createSlice({
       state.loading = true;
     },
     deleteSongSuccess: (state, action) => {
+      // assume the action payload contain the id of to be delated song 
+      // filtering all songs with discarding the deleted song
       state.songs = state.songs.filter((song) => song.id !== action.payload);
       state.loading = false;
     },

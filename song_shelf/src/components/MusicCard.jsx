@@ -1,28 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-const MusicCard = ({ id, title, genre, album, artistImage }) => {
-  return (
-    <Link to={`/edit-song/${id}`}>
-      <div className="music-card border rounded-lg shadow-md cursor-pointer flex flex-col h-64 w-full"> 
-        {/* Fixed height for the image */}
-        <div className="h-32 w-full">
-          <img 
-            src={artistImage} 
-            alt={title} 
-            className="w-full h-full object-cover rounded-t-lg"
-          />
-        </div>
-        
-        {/* Fixed height for the text container */}
-        <div className="p-4 flex-grow flex flex-col justify-between">
-          <h2 className="text-lg font-bold truncate">{title}</h2>
-          <p className="text-sm text-slate-100 truncate">Genre: {genre}</p>
-          <p className="text-sm text-slate-100 truncate">Album: {album}</p>
-        </div>
-      </div>
-    </Link>
-  );
-};
+import SongActions from "./SongActions"
+const MusicCard = ({ id, title, genre, album, artistImage, onEditSong, onDeleteSong }) => (
+  <div className="music-card bg-gray-900 p-4 rounded-lg shadow-md">
+    <img src={artistImage} alt={`${title} cover`} className="w-full h-40 object-cover mb-4" />
+    <h3 className="text-white text-lg font-bold">{title}</h3>
+    <p className="text-gray-400">{genre}</p>
+    <p className="text-gray-400">{album}</p>
+    
+    {/* Song actions */}
+    <SongActions
+      onAddSong={null} // You might skip this if not needed for individual songs
+      onEditSong={() => onEditSong(id)} // Pass the song ID for editing
+      onDeleteSong={() => onDeleteSong(id)} // Pass the song ID for deleting
+    />
+  </div>
+);
 
 export default MusicCard;
