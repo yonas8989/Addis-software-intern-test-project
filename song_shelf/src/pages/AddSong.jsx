@@ -1,10 +1,12 @@
 import React from 'react'
+import Header from "../components/Header"
+import AddSongForm from '../features/songs/AddSongForm'
 
 function AddSong() {
   return (
     <div>
-      this is addsong page 
-      
+      <Header/>
+      <AddSongForm/>   
     </div>
   )
 }

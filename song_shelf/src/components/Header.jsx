@@ -45,9 +45,12 @@ const Header = () => {
             <li>
               <Link to="/song-list" className="text-white">Song List</Link>
             </li>
-            {/* <li>
-              <Link to="/edit-song" className="text-white">Edit Song</Link>
-            </li> */}
+            <li>
+              <Link to="/add-song" className="text-white">add Song</Link>
+            </li>
+            <li>
+              <Link to="/edit-song" className="text-white">edit Song</Link>
+            </li>
           </ul>
         </nav>
       </div>
