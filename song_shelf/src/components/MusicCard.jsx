@@ -9,7 +9,6 @@ const MusicCard = ({ id, title, genre, album, artistImage, onEditSong, onDeleteS
     
     {/* Song actions */}
     <SongActions
-      onAddSong={null} // You might skip this if not needed for individual songs
       onEditSong={() => onEditSong(id)} // Pass the song ID for editing
       onDeleteSong={() => onDeleteSong(id)} // Pass the song ID for deleting
     />

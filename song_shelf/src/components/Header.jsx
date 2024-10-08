@@ -40,7 +40,7 @@ const Header = () => {
               <Link to="/" className="text-white">Home</Link>
             </li>
             <li>
-              <Link to="/about" className="text-white">about</Link>
+              {/* <Link to="/about" className="text-white">about</Link> */}
             </li>
             <li>
               <Link to="/song-list" className="text-white">Song List</Link>

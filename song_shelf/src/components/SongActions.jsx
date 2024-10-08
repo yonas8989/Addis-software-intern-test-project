@@ -1,9 +1,8 @@
 import React from 'react';
 
-const SongActions = ({ onAddSong, onDeleteSong, onEditSong }) => (
+const SongActions = ({  onDeleteSong, onEditSong }) => (
   <div className="song-actions flex justify-between items-center p-2 bg-gradient-to-r from-gray-500 to-indigo-100 rounded-lg shadow-md">
     {[
-      { label: 'Add', onClick: onAddSong },
       { label: 'Edit', onClick: onEditSong },
       { label: 'Delete', onClick: onDeleteSong }
     ].map(({ label, onClick }) => (
