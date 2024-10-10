@@ -46,7 +46,7 @@ const Header = () => {
               <Link to="/song-list" className="text-white">Song List</Link>
             </li>
             <li>
-              <Link to="/add-song" className="text-white">add Song</Link>
+              <Link to="/add-song" className="btn-square">add Song</Link>
             </li>
           </ul>
         </nav>

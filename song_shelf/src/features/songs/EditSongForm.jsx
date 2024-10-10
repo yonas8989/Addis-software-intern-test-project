@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { editSongRequest } from '../songs/SongSlice';
 
-const EditSongForm = ({ songId, onClose }) => {
-  const dispatch = useDispatch();
+const EditSongForm = () => {
 
-  // Fetch the current song details from the Redux store
-  const song = useSelector((state) =>
-    state.songs.songs.find((song) => song.id === songId)
-  );
 
   // Local state to hold the form data
   const [title, setTitle] = useState('');
@@ -16,34 +9,10 @@ const EditSongForm = ({ songId, onClose }) => {
   const [genre, setGenre] = useState('');
   const [album, setAlbum] = useState('');
 
-  // Populate the form with existing song data when component mounts
-  useEffect(() => {
-    if (song) {
-      setTitle(song.title);
-      setArtist(song.artist);
-      setGenre(song.genre);
-      setAlbum(song.album);
-    }
-  }, [song]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const updatedSong = {
-      id: songId,
-      title,
-      artist,
-      genre,
-      album,
-    };
-
-    // Dispatch the edit song request to update the song
-    dispatch(editSongRequest(updatedSong));
-
-    // Optionally, close the form after submission
-    if (onClose) {
-      onClose();
-    }
   };
 
   return (

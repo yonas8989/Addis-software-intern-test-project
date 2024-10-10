@@ -1,32 +1,25 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addSongRequest } from '../songs/SongSlice';
-
+import { useDispatch, useSelector } from 'react-redux';
+useSelector
+import { addSong } from './SongSlice';
+import { useNavigate } from 'react-router-dom';
 const AddSongForm = () => {
-  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
   const [genre, setGenre] = useState('');
   const [album, setAlbum] = useState('');
 
+  const songs = useSelector((state) =>state.songs);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newSong = {
-      title,
-      artist,
-      genre,
-      album,
-    };
-
-    // Dispatch action to add song
-    dispatch(addSongRequest(newSong));
-
-    // Reset form fields
-    setTitle('');
-    setArtist('');
-    setGenre('');
-    setAlbum('');
+    const newId = songs.length > 0 ? songs[songs.length - 1].id + 1 : 1;
+    dispatch(addSong({id:newId , title, artist, genre, album}))
+    navigate("/song-list")
   };
 
   return (
