@@ -1,6 +1,19 @@
-import React from 'react';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteSong } from "../features/songs/songSlice"
 
-const SongCard = ({ song, onEdit, onDelete }) => {
+const SongCard = ({ song }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleDelete = (song) => {
+    if (window.confirm("Are you sure you want to delete this song?")) {
+      dispatch(deleteSong({ id: song.id }));
+      navigate('/song-list'); // Optionally navigate to the main page after deletion
+    }
+  };
+
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
       <div className="px-6 py-4">
@@ -20,15 +33,15 @@ const SongCard = ({ song, onEdit, onDelete }) => {
 
       {/* Edit and Delete buttons */}
       <div className="px-6 py-4 flex justify-between">
-        <button
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => onEdit(song.id)}
+        <Link
+          to={`/edit-song/${song.id}`}
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-block"
         >
           Edit
-        </button>
+        </Link>
         <button
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => onDelete(song.id)}
+          onClick={() => handleDelete(song)} // Call handleDelete on click
+          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block"
         >
           Delete
         </button>
