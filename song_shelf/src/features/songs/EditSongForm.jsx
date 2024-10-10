@@ -1,18 +1,39 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { updateSong } from './SongSlice';
+
+
+
 
 const EditSongForm = () => {
 
+const{id} = useParams();
+const songs = useSelector((state) => state.songs);
 
+
+const existionSong = songs.filter(filteredSong => filteredSong.id == id);
+const {title, artist, genre, album} = existionSong[0];
   // Local state to hold the form data
-  const [title, setTitle] = useState('');
-  const [artist, setArtist] = useState('');
-  const [genre, setGenre] = useState('');
-  const [album, setAlbum] = useState('');
+  const [updatedTitle, setUpdatedTitle] = useState(title);
+  const [updatedArtist, setUpdatedArtist] = useState(artist);
+  const [updatedGenre, setUpdatedGenre] = useState(genre);
+  const [updatedAlbum, setUpdatedAlbum] = useState(album);
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    dispatch(updateSong({
+        id:id,
+        title:updatedTitle,
+        artist:updatedArtist,
+        genre:updatedGenre,
+        album:updatedAlbum
+    }))
+    navigate("/song-list")
   };
 
   return (
@@ -26,8 +47,8 @@ const EditSongForm = () => {
           <input
             type="text"
             id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={updatedTitle}
+            onChange={(e) => setUpdatedTitle(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
             placeholder="Enter song title"
             required
@@ -41,8 +62,8 @@ const EditSongForm = () => {
           <input
             type="text"
             id="artist"
-            value={artist}
-            onChange={(e) => setArtist(e.target.value)}
+            value={updatedArtist}
+            onChange={(e) => setUpdatedArtist(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
             placeholder="Enter artist name"
             required
@@ -56,8 +77,8 @@ const EditSongForm = () => {
           <input
             type="text"
             id="genre"
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
+            value={updatedGenre}
+            onChange={(e) => setUpdatedGenre(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
             placeholder="Enter genre"
             required
@@ -71,8 +92,8 @@ const EditSongForm = () => {
           <input
             type="text"
             id="album"
-            value={album}
-            onChange={(e) => setAlbum(e.target.value)}
+            value={updatedAlbum}
+            onChange={(e) => setUpdatedAlbum(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-300"
             placeholder="Enter album name"
             required
